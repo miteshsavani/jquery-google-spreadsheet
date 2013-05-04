@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>jQuery GoogleSpreadsheet</title>
+	<link rel="stylesheet" type="text/css" href="js/lib/jsoneditor.css">
+</head>
+<body>
+	<header>
+		<h1>jQuery GoogleSpreadsheet</h1>
+		<p>jQuery plugin to read data from google spreadsheets easily</p>
+	</header>
+
+	<article>
+
+		<section>
+			<h2>Example display the contents of the spreadsheet</h2>
+			<iframe id="dataSource" src"" width="100%"></iframe>
+		</section>
+
+		<section>
+			<h2>Example of data returned by the library in json format</h2>
+			<div id="json" > </div>
+		</section>
+
+		<section>
+			<h2>Example of data returned by the library in json format in detail and visual thanks to plugin <a href="https://github.com/DavidDurman/FlexiJsonEditor">jsoneditor</a></h2>
+			<div id="result"  class="json-editor"></div>
+		</section>
+
+	</article>
+
+	<footer>
+		Created by <a href="http://quelicoto.es">quelicm</a> based <a href="https://github.com/mikeymckay/google-spreadsheet-javascript">google-spreadsheet-javascript</a>
+	</footer>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/jquery.google.spreadsheet.min.js"></script>
+<!-- only jsoneditor code for visualization sample -->
+<script src="js/lib/jquery.jsoneditor.js"></script>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		
+		var url = "https://docs.google.com/spreadsheet/pub?key=0AtIDg8Wg2JCFdGdibXdnaWd2eVRRR2xVM0RlMU55ekE&output=html";
+		var googleSpreadsheet = new GoogleSpreadsheet();
+		googleSpreadsheet.url(url);
+		googleSpreadsheet.load(function(result) {
+			$('#result').jsonEditor(result);
+			$('#dataSource').prop('src',url);
+			$('#json').html(JSON.stringify(result));
+			$('.expander').trigger('click');
+		});
+	});
+</script>
+</body>
+</html>

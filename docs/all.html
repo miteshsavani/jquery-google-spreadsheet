@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>jQuery GoogleSpreadsheet</title>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans&subset=latin">
+    <link type="text/css" rel="stylesheet" href="css/reset.css">
+    <link type="text/css" rel="stylesheet" href="css/docs.css">
+    <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
+    <link type="text/css" rel="stylesheet" href="http://yandex.st/highlightjs/6.1/styles/github.min.css">
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://yandex.st/highlightjs/6.1/highlight.min.js"></script>
+    
+    <script type="text/javascript" src="js/viewer.js"></script>
+</head>
+<body>
+    <div id="page">
+        <a name="top" />
+        
+            <header id="header">
+                <h1><a href="">jQuery GoogleSpreadsheet</a></h1>
+            </header>
+        
+        <div id='content'><a name="jquery-googlespreadsheet"></a><h1>jQuery GoogleSpreadsheet</h1>
+<p>jQuery plugin to read data from google spreadsheets easily. This plugin uses Google Spreadsheets API version 3.0. <a href="https://developers.google.com/google-apps/spreadsheets/">Link</a>. Created by <a href="http://quelicoto.es">quelicm</a> based <a href="https://github.com/mikeymckay/google-spreadsheet-javascript">google-spreadsheet-javascript</a></p>
+<a name="requirements"></a><h2>Requirements:</h2>
+<p>To run your spreadsheet in google must be published to the web. To do this go to <strong>File -&gt; Publish to the web</strong> in the next screen select:</p>
+<ul>
+<li>in <strong>Sheets to publish</strong>  you can publish all or just a specific sheet and press the button <strong>Start publishing</strong></li>
+<li>in <strong>Get a link to the published data</strong> web page you must select the first selector, this will generate a url in the textarea below, this is the url that we use. <a href="https://docs.google.com/spreadsheet/pub?key=0AtIDg8Wg2JCFdGdibXdnaWd2eVRRR2xVM0RlMU55ekE&amp;output=html">Example</a></li>
+</ul>
+<a name="installation"></a><h2>Installation:</h2>
+<p>Add the meta script to your web page</p>
+<pre><code>&lt;script src=&quot;js/jquery.google.spreadsheet.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+<a name="use"></a><h2>Use</h2>
+<p>In your code introduces the following lines</p>
+<pre><code>var url = &quot;https://docs.google.com/spreadsheet/pub?key=0AtIDg8Wg2JCFdGdibXdnaWd2eVRRR2xVM0RlMU55ekE&amp;output=html&quot;;
+var googleSpreadsheet = new GoogleSpreadsheet();
+googleSpreadsheet.url(url);
+googleSpreadsheet.load(function(result) {
+    //result 
+});</code></pre>
+<ul>
+<li><em>var url</em> Indicate the url&#39;s where our spreadsheet</li>
+<li><em>var googleSpreadsheet</em> instance of the class</li>
+<li><em>googleSpreadsheet.url(url);</em> add to our class to process the url</li>
+<li><em>googleSpreadsheet.load</em> call the function that returns all data sheet caluculo our json format.</li>
+<li><em>result</em> as json object contains all the data from the spreadsheet that we have introduced.</li>
+</ul>
+<a name="support-for-multiple-sheets"></a><h2>Support for multiple sheets</h2>
+<p>If your spreadsheet has more than one page, you can access the contents of the following adding to the url parameter <strong>&amp;gid=num</strong> be 0 for first, 1 for the second ... <a href="https://docs.google.com/spreadsheet/pub?key=0AtIDg8Wg2JCFdGdibXdnaWd2eVRRR2xVM0RlMU55ekE&amp;output=html&amp;gid=1">Example</a></p>
+
+</div>
+        <footer id="footer">
+            Powered by <a href="http://github.com/maximebf/beautiful-docs">beautiful-docs</a> -
+            <a href="#top">Back to top</a> - <a href="all.html">Everything on a single page</a>
+            - <a href="?print=1">Print current page</a> - <a href="all.html?print=1">Print all pages</a>
+            
+        </footer>
+    </div>
+</body>
+</html>
