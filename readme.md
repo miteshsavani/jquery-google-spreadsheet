@@ -1,6 +1,9 @@
 # jQuery GoogleSpreadsheet
 
-jQuery plugin to read data from google spreadsheets easily. This plugin uses Google Spreadsheets API version 3.0. [Link](https://developers.google.com/google-apps/spreadsheets/). Created by [quelicm](http://quelicoto.es) based [google-spreadsheet-javascript](https://github.com/mikeymckay/google-spreadsheet-javascript)
+jQuery plugin to read data from google spreadsheets easy. This plugin uses Google Spreadsheets API version 3.0. [Link](https://developers.google.com/google-apps/spreadsheets/). Created by [quelicm](http://quelicoto.es) based [google-spreadsheet-javascript](https://github.com/mikeymckay/google-spreadsheet-javascript)
+
+- See [example](http://htmlpreview.github.io/?https://github.com/nothnk/jquery-google-spreadsheet/blob/master/index.html)
+- See [documentation](http://htmlpreview.github.io/?https://github.com/nothnk/jquery-google-spreadsheet/blob/master/docs/index.html)
 
 ## Requirements:
 
