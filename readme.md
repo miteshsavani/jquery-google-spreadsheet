@@ -5,6 +5,14 @@ jQuery plugin to read data from google spreadsheets easy. This plugin uses Googl
 - See [example](http://htmlpreview.github.io/?https://github.com/nothnk/jquery-google-spreadsheet/blob/master/index.html)
 - See [documentation](http://htmlpreview.github.io/?https://github.com/nothnk/jquery-google-spreadsheet/blob/master/docs/index.html)
 
+## ChangeLog
+
+### v 0.0.2
+- Code optimized thanks to the advice of [@joseanpg](https://twitter.com/joseanpg)
+
+### v 0.0.1 
+- Initial version
+
 ## Requirements:
 
 To run your spreadsheet in google must be published to the web. To do this go to **File -> Publish to the web** in the next screen select:
@@ -30,7 +38,7 @@ In your code introduces the following lines
 - *var url* Indicate the url's where our spreadsheet
 - *var googleSpreadsheet* instance of the class
 - *googleSpreadsheet.url(url);* add to our class to process the url
-- *googleSpreadsheet.load* call the function that returns all data sheet caluculo our json format.
+- *googleSpreadsheet.load* call the function that returns all data spreadsheet our json format.
 - *result* as json object contains all the data from the spreadsheet that we have introduced.
 
 ## Support for multiple sheets

@@ -1,5 +1,5 @@
 // jquery.google.spreadsheet.js
-// version : 0.0.1
+// version : 0.0.2
 // author : Queli Coto (quelicm@gmail.com)
 // license : MIT
 // http://quelicoto.es
@@ -11,6 +11,7 @@ var GoogleSpreadsheet = (function($) {
   GoogleSpreadsheet.prototype.getGoogleUrl = function() {
     return googleUrl;
   };
+
  GoogleSpreadsheet.prototype.url = function(url) {
     googleUrl = this.getGoogleUrl();
     googleUrl.sourceIdentifier = url;
@@ -39,32 +40,34 @@ var GoogleSpreadsheet = (function($) {
     googleUrl.jsonCellsUrl = 'http://spreadsheets.google.com/feeds/cells/' + googleUrl.key + '/' + googleUrl.gid + '/public/basic?alt=json-in-script';
     googleUrl.jsonListUrl = 'http://spreadsheets.google.com/feeds/list/' + googleUrl.key + '/' + googleUrl.gid + '/public/basic?alt=json-in-script';
   };
+
   GoogleSpreadsheet.prototype.load = function() {
     var param = arguments;
+    var GoogleSpreadsheet = this;
     if(param.length > 1 && param[0]==='cell'){
-      $.when( this.loadCells() ).then( function( data ){
-        return param[1](data);
+      this.loadCells().then( function( data ){
+        return param[1](GoogleSpreadsheet.loadDataCells(data));
       });
     } else {
-       $.when( this.loadList() ).then( function( data ){
-        return param[0](data);
+       this.loadList().then( function( data ){
+        return param[0](GoogleSpreadsheet.loadDataList(data));
       });
     }
   };
 
-
   GoogleSpreadsheet.prototype.loadCells = function(url) {
     googleUrl = this.getGoogleUrl();
-    return $.Deferred(function (d) {
-        url = googleUrl.jsonCellsUrl + '&callback=?';
-        $.getJSON(url, function(data) {
-         var dataContent = GoogleSpreadsheet.loadDataCells(data);
-         d.resolve(dataContent);
-        });
-    });
+    url = googleUrl.jsonCellsUrl + '&callback=?';
+    return $.getJSON(url);
   };
 
-  GoogleSpreadsheet.loadDataCells = function(data) {
+  GoogleSpreadsheet.prototype.loadList = function(url) {
+    googleUrl = this.getGoogleUrl();
+    url = googleUrl.jsonListUrl + '&callback=?';
+    return $.getJSON(url);
+  };
+
+  GoogleSpreadsheet.prototype.loadDataCells = function(data) {
     var cell;
       var _i, _len, _ref, _results;
       _ref = data.feed.entry;
@@ -77,18 +80,7 @@ var GoogleSpreadsheet = (function($) {
       return _results;
   };
 
-  GoogleSpreadsheet.prototype.loadList = function(url) {
-    googleUrl = this.getGoogleUrl();
-      return $.Deferred(function (d) {
-      url = googleUrl.jsonListUrl + '&callback=?';
-      $.getJSON(url, function(data) {
-       var dataContent = GoogleSpreadsheet.loadDataList(data);
-       d.resolve(dataContent);
-      });
-    });
-  };
-
-  GoogleSpreadsheet.loadDataList = function(data) {
+  GoogleSpreadsheet.prototype.loadDataList = function(data) {
     var cell, googleSpreadsheet, googleUrl;
       var _i, _len, _ref, _results;
       _ref = data.feed.entry;
