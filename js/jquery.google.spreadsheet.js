@@ -37,8 +37,8 @@ var GoogleSpreadsheet = (function($) {
     } else {
       googleUrl.key = googleUrl.sourceIdentifier;
     }
-    googleUrl.jsonCellsUrl = 'http://spreadsheets.google.com/feeds/cells/' + googleUrl.key + '/' + googleUrl.gid + '/public/basic?alt=json-in-script';
-    googleUrl.jsonListUrl = 'http://spreadsheets.google.com/feeds/list/' + googleUrl.key + '/' + googleUrl.gid + '/public/basic?alt=json-in-script';
+    googleUrl.jsonCellsUrl = 'https://spreadsheets.google.com/feeds/cells/' + googleUrl.key + '/' + googleUrl.gid + '/public/basic?alt=json-in-script';
+    googleUrl.jsonListUrl = 'https://spreadsheets.google.com/feeds/list/' + googleUrl.key + '/' + googleUrl.gid + '/public/basic?alt=json-in-script';
   };
 
   GoogleSpreadsheet.prototype.load = function() {
